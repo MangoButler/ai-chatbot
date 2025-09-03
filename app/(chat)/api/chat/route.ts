@@ -222,6 +222,12 @@ export async function POST(request: Request) {
     if (error instanceof ChatSDKError) {
       return error.toResponse();
     }
+
+    console.error('Unexpected error in /api/chat:', error);
+    return new Response(
+      JSON.stringify({ error: 'internal_server_error:chat' }),
+      { status: 500 },
+    );
   }
 }
 

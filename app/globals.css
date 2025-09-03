@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
+  .text-balance {
+    text-wrap: balance;
+  }
 }
-
+/* 
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -92,73 +92,145 @@
         --sidebar-border: 240 3.7% 15.9%;
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
+} */
+
+@layer base {
+  :root {
+    --background: 44 85% 95%; /* #FDF0D5 - warm light background */
+    --foreground: 202 100% 14%; /* #003049 - dark blue for text */
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 202 100% 14%; /* #003049 - dark blue text on cards */
+    --popover: 0 0% 100%; /* Pure white for popovers */
+    --popover-foreground: 202 100% 14%; /* #003049 - dark blue text */
+    --primary: 0 100% 23%; /* #780000 - deep red primary */
+    --primary-foreground: 44 85% 95%; /* #FDF0D5 - light cream text on primary */
+    --secondary: 44 85% 95%; /* #FDF0D5 - cream secondary */
+    --secondary-foreground: 202 100% 14%; /* #003049 - dark blue text on secondary */
+    --muted: 44 70% 90%; /* Slightly darker cream for muted areas */
+    --muted-foreground: 202 50% 35%; /* Lighter blue for muted text */
+    --accent: 199 50% 58%; /* #669BBC - blue accent */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --destructive: 354 89% 44%; /* #C1121F - red for destructive actions */
+    --destructive-foreground: 0 0% 98%; /* Light text on destructive */
+    --border: 44 60% 85%; /* Light cream border */
+    --input: 44 60% 85%; /* Light cream input background */
+    --ring: 0 100% 23%; /* #780000 - primary red for focus rings */
+    --chart-1: 0 100% 23%; /* #780000 - primary red */
+    --chart-2: 199 50% 58%; /* #669BBC - blue */
+    --chart-3: 202 100% 14%; /* #003049 - dark blue */
+    --chart-4: 354 89% 44%; /* #C1121F - effect red */
+    --chart-5: 44 85% 95%; /* #FDF0D5 - cream */
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%; /* Light sidebar */
+    --sidebar-foreground: 202 100% 14%; /* #003049 - dark blue text */
+    --sidebar-primary: 0 100% 23%; /* #780000 - primary red */
+    --sidebar-primary-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --sidebar-accent: 199 50% 58%; /* #669BBC - blue accent */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text on accent */
+    --sidebar-border: 44 60% 85%; /* Light cream border */
+    --sidebar-ring: 199 50% 58%; /* #669BBC - blue ring */
+  }
+  .dark {
+    --background: 202 100% 14%; /* #003049 - dark blue background */
+    --foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --card: 202 90% 18%; /* Slightly lighter than background for cards */
+    --card-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --popover: 202 90% 18%; /* Slightly lighter for popovers */
+    --popover-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --primary: 0 100% 23%; /* #780000 - deep red primary */
+    --primary-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --secondary: 202 80% 22%; /* Lighter blue for secondary */
+    --secondary-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --muted: 202 70% 20%; /* Muted dark blue */
+    --muted-foreground: 44 60% 75%; /* Muted cream text */
+    --accent: 199 50% 58%; /* #669BBC - blue accent */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --destructive: 354 89% 44%; /* #C1121F - red for destructive */
+    --destructive-foreground: 0 0% 98%; /* Light text */
+    --border: 202 70% 20%; /* Dark blue border */
+    --input: 202 70% 20%; /* Dark blue input background */
+    --ring: 44 85% 95%; /* #FDF0D5 - cream focus ring */
+    --chart-1: 0 100% 35%; /* Lighter red for dark mode */
+    --chart-2: 199 60% 65%; /* Lighter blue */
+    --chart-3: 44 85% 95%; /* #FDF0D5 - cream */
+    --chart-4: 354 89% 55%; /* Lighter effect red */
+    --chart-5: 199 40% 45%; /* Darker blue variant */
+    --sidebar-background: 202 100% 14%; /* #003049 - dark blue */
+    --sidebar-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --sidebar-primary: 0 100% 23%; /* #780000 - primary red */
+    --sidebar-primary-foreground: 44 85% 95%; /* #FDF0D5 - cream text */
+    --sidebar-accent: 199 50% 58%; /* #669BBC - blue accent */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text */
+    --sidebar-border: 202 70% 20%; /* Dark blue border */
+    --sidebar-ring: 199 50% 58%; /* #669BBC - blue ring */
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
+  * {
+    @apply border-border;
+  }
 
-    body {
-        @apply bg-background text-foreground;
-    }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 .skeleton {
-    * {
-        pointer-events: none !important;
-    }
+  * {
+    pointer-events: none !important;
+  }
 
-    *[class^="text-"] {
-        color: transparent;
-        @apply rounded-md bg-foreground/20 select-none animate-pulse;
-    }
+  *[class^="text-"] {
+    color: transparent;
+    @apply rounded-md bg-foreground/20 select-none animate-pulse;
+  }
 
-    .skeleton-bg {
-        @apply bg-foreground/10;
-    }
+  .skeleton-bg {
+    @apply bg-foreground/10;
+  }
 
-    .skeleton-div {
-        @apply bg-foreground/20 animate-pulse;
-    }
+  .skeleton-div {
+    @apply bg-foreground/20 animate-pulse;
+  }
 }
 
 .ProseMirror {
-    outline: none;
+  outline: none;
 }
 
 .cm-editor,
 .cm-gutters {
-    @apply bg-background dark:bg-zinc-800 outline-none selection:bg-zinc-900 !important;
+  @apply bg-background dark:bg-zinc-800 outline-none selection:bg-zinc-900 !important;
 }
 
 .ͼo.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground,
 .ͼo.cm-selectionBackground,
 .ͼo.cm-content::selection {
-    @apply bg-zinc-200 dark:bg-zinc-900 !important;
+  @apply bg-zinc-200 dark:bg-zinc-900 !important;
 }
 
 .cm-activeLine,
 .cm-activeLineGutter {
-    @apply bg-transparent !important;
+  @apply bg-transparent !important;
 }
 
 .cm-activeLine {
-    @apply rounded-r-sm !important;
+  @apply rounded-r-sm !important;
 }
 
 .cm-lineNumbers {
-    @apply min-w-7;
+  @apply min-w-7;
 }
 
 .cm-foldGutter {
-    @apply min-w-3;
+  @apply min-w-3;
 }
 
 .cm-lineNumbers .cm-activeLineGutter {
-    @apply rounded-l-sm !important;
+  @apply rounded-l-sm !important;
 }
 
 .suggestion-highlight {
-    @apply bg-blue-200 hover:bg-blue-300 dark:hover:bg-blue-400/50 dark:text-blue-50 dark:bg-blue-500/40;
+  @apply bg-blue-200 hover:bg-blue-300 dark:hover:bg-blue-400/50 dark:text-blue-50 dark:bg-blue-500/40;
 }
