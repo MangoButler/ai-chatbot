@@ -17,4 +17,9 @@ export const chatModels: Array<ChatModel> = [
     name: 'Reasoning model',
     description: 'Uses advanced reasoning',
   },
+  {
+    id: 'character-fight-simulator',
+    name: 'Character fight simulator',
+    description: 'Simulates fights between fictional characters',
+  },
 ];

@@ -55,6 +55,7 @@ export const myProvider = isTestEnvironment
       languageModels: {
         'chat-model': chatModel,
         'chat-model-reasoning': reasoningModel,
+
         'title-model': titleModel,
         'artifact-model': artifactModel,
       },
@@ -62,13 +63,14 @@ export const myProvider = isTestEnvironment
   : customProvider({
       languageModels: {
         // ✅ Gemini model IDs
-        'chat-model': google('gemini-1.5-pro'),
+        'chat-model': google('gemini-1.5-flash'),
         'chat-model-reasoning': wrapLanguageModel({
           model: google('gemini-1.5-flash'), // lighter reasoning-friendly model
           middleware: extractReasoningMiddleware({ tagName: 'think' }),
         }),
         'title-model': google('gemini-1.5-flash'),
         'artifact-model': google('gemini-1.5-flash'),
+        'character-fight-simulator': google('gemini-1.5-flash'),
       },
       imageModels: {
         'small-model': google.imageModel('gemini-1.5-pro'), // ✅ Gemini Vision/Image
