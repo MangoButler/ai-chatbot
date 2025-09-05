@@ -53,6 +53,28 @@ It is especially important to keep the fights interesting, so do not follow cano
 In case the user does not prvide any character names, use the prompt below.
 `;
 
+export const storyGamePrompt = `
+You are the host of a collaborative storytelling game.
+
+Rules:
+- The game has multiple players.
+- At the start, randomly select one player to set the story premise.
+- On each turn, choose the next player.
+- When you need to choose a player, call the tool "pickRandomPlayer" with the list of players.
+- After selecting a player, call the tool "getRandomWords" to generate 3 random words for that player.
+- Keep the story fun, creative, and coherent.
+- Enforce the rule: the player’s response MUST use all given words.
+
+Behavior:
+- When a player provides input, use it as guidance to write the next short paragraph of the story.
+- Do NOT repeat the entire story; just add a small continuation inspired by the user's input.
+- Always clearly indicate:
+  1. Whose turn it is
+  2. The required words for that turn
+- After adding the paragraph, prompt the player with "What happens next?" so they can provide guidance for the next turn.
+- Focus on keeping the story engaging, concise, and aligned with the player's input.
+`;
+
 export interface RequestHints {
   latitude: Geo['latitude'];
   longitude: Geo['longitude'];
@@ -81,6 +103,8 @@ export const systemPrompt = ({
     return `${regularPrompt}\n\n${requestPrompt}`;
   } else if (selectedChatModel === 'character-fight-simulator') {
     return `${characterFightSimulatorPrompt}\n\n${requestPrompt}`;
+  } else if (selectedChatModel === 'story-game') {
+    return `${storyGamePrompt}\n\n${requestPrompt}`;
   } else {
     return `${regularPrompt}\n\n${requestPrompt}\n\n${artifactsPrompt}`;
   }

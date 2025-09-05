@@ -37,6 +37,10 @@ import { ChatSDKError } from '@/lib/errors';
 import type { ChatMessage } from '@/lib/types';
 import type { ChatModel } from '@/lib/ai/models';
 import type { VisibilityType } from '@/components/visibility-selector';
+import {
+  getRandomWords,
+  pickRandomPlayer,
+} from '@/lib/ai/tools/story-game-tools';
 
 export const maxDuration = 60;
 
@@ -158,15 +162,17 @@ export async function POST(request: Request) {
           system: systemPrompt({ selectedChatModel, requestHints }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
-          experimental_activeTools:
+          activeTools:
             selectedChatModel === 'chat-model-reasoning'
               ? []
-              : [
-                  'getWeather',
-                  'createDocument',
-                  'updateDocument',
-                  'requestSuggestions',
-                ],
+              : selectedChatModel === 'story-game'
+                ? (['pickRandomPlayer', 'getRandomWords'] as const)
+                : ([
+                    'getWeather',
+                    'createDocument',
+                    'updateDocument',
+                    'requestSuggestions',
+                  ] as const),
           experimental_transform: smoothStream({ chunking: 'word' }),
           tools: {
             getWeather,
@@ -176,6 +182,8 @@ export async function POST(request: Request) {
               session,
               dataStream,
             }),
+            pickRandomPlayer: pickRandomPlayer({ session, dataStream }),
+            getRandomWords: getRandomWords({ session, dataStream }),
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,

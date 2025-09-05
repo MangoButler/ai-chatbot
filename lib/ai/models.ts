@@ -22,4 +22,9 @@ export const chatModels: Array<ChatModel> = [
     name: 'Character fight simulator',
     description: 'Simulates fights between fictional characters',
   },
+  {
+    id: 'story-game',
+    name: 'Collaborative Story Game',
+    description: 'Players take turns writing a story using random words',
+  },
 ];

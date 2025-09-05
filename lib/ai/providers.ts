@@ -71,6 +71,7 @@ export const myProvider = isTestEnvironment
         'title-model': google('gemini-1.5-flash'),
         'artifact-model': google('gemini-1.5-flash'),
         'character-fight-simulator': google('gemini-1.5-flash'),
+        'story-game': google('gemini-1.5-flash'),
       },
       imageModels: {
         'small-model': google.imageModel('gemini-1.5-pro'), // ✅ Gemini Vision/Image

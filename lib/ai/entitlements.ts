@@ -16,6 +16,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       'chat-model',
       'chat-model-reasoning',
       'character-fight-simulator',
+      'story-game',
     ],
   },
 
@@ -28,6 +29,7 @@ export const entitlementsByUserType: Record<UserType, Entitlements> = {
       'chat-model',
       'chat-model-reasoning',
       'character-fight-simulator',
+      'story-game',
     ],
   },
 

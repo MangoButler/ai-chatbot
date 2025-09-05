@@ -25,6 +25,7 @@ export const postRequestBodySchema = z.object({
     'chat-model',
     'chat-model-reasoning',
     'character-fight-simulator',
+    'story-game',
   ]),
   selectedVisibilityType: z.enum(['public', 'private']),
 });
