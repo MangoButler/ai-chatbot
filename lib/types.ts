@@ -118,6 +118,7 @@ export type CustomUIDataTypes = {
   // 👇 custom events emitted by your tools
   chosenPlayer: string; // name of the player selected
   words: string[]; // list of random words generated
+  plotTwist?: string; // 👈 added
 };
 
 export type ChatMessage = UIMessage<

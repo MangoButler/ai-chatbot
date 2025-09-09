@@ -157,34 +157,76 @@ export async function POST(request: Request) {
 
     const stream = createUIMessageStream({
       execute: ({ writer: dataStream }) => {
+        // const result = streamText({
+        //   model: myProvider.languageModel(selectedChatModel),
+        //   system: systemPrompt({ selectedChatModel, requestHints }),
+        //   messages: convertToModelMessages(uiMessages),
+        //   stopWhen: stepCountIs(5),
+        //   activeTools:
+        //     selectedChatModel === 'chat-model-reasoning'
+        //       ? []
+        //       : selectedChatModel === 'story-game'
+        //         ? (['pickRandomPlayer', 'getRandomWords'] as const)
+        //         : ([
+        //             'getWeather',
+        //             'createDocument',
+        //             'updateDocument',
+        //             'requestSuggestions',
+        //           ] as const),
+        //   experimental_transform: smoothStream({ chunking: 'word' }),
+        //   tools: {
+        //     getWeather,
+        //     createDocument: createDocument({ session, dataStream }),
+        //     updateDocument: updateDocument({ session, dataStream }),
+        //     requestSuggestions: requestSuggestions({
+        //       session,
+        //       dataStream,
+        //     }),
+        //     pickRandomPlayer: pickRandomPlayer({ session, dataStream }),
+        //     getRandomWords: getRandomWords({ session, dataStream }),
+        //   },
+        //   experimental_telemetry: {
+        //     isEnabled: isProductionEnvironment,
+        //     functionId: 'stream-text',
+        //   },
+        // });
+
+        const tools = {
+          getWeather,
+          createDocument: createDocument({ session, dataStream }),
+          updateDocument: updateDocument({ session, dataStream }),
+          requestSuggestions: requestSuggestions({ session, dataStream }),
+          pickRandomPlayer: pickRandomPlayer({ session, dataStream }),
+          getRandomWords: getRandomWords({ session, dataStream }),
+        };
+
+        const activeTools: Array<
+          | 'pickRandomPlayer'
+          | 'getRandomWords'
+          | 'getWeather'
+          | 'createDocument'
+          | 'updateDocument'
+          | 'requestSuggestions'
+        > =
+          selectedChatModel === 'chat-model-reasoning'
+            ? []
+            : selectedChatModel === 'story-game'
+              ? ['pickRandomPlayer', 'getRandomWords']
+              : [
+                  'getWeather',
+                  'createDocument',
+                  'updateDocument',
+                  'requestSuggestions',
+                ];
+
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
           system: systemPrompt({ selectedChatModel, requestHints }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
-          activeTools:
-            selectedChatModel === 'chat-model-reasoning'
-              ? []
-              : selectedChatModel === 'story-game'
-                ? (['pickRandomPlayer', 'getRandomWords'] as const)
-                : ([
-                    'getWeather',
-                    'createDocument',
-                    'updateDocument',
-                    'requestSuggestions',
-                  ] as const),
+          activeTools,
           experimental_transform: smoothStream({ chunking: 'word' }),
-          tools: {
-            getWeather,
-            createDocument: createDocument({ session, dataStream }),
-            updateDocument: updateDocument({ session, dataStream }),
-            requestSuggestions: requestSuggestions({
-              session,
-              dataStream,
-            }),
-            pickRandomPlayer: pickRandomPlayer({ session, dataStream }),
-            getRandomWords: getRandomWords({ session, dataStream }),
-          },
+          tools,
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,
             functionId: 'stream-text',
