@@ -10,10 +10,12 @@ const sql = postgres(DATABASE_URL);
 
 (async () => {
   try {
-    // Drop Chat table and all dependent objects
-    await sql`DROP TABLE IF EXISTS "Chat" CASCADE;`;
+    // Drop the entire schema
+    await sql`DROP SCHEMA public CASCADE`;
+    // Recreate the schema
+    await sql`CREATE SCHEMA public`;
 
-    console.log('Chat table and dependent objects dropped successfully!');
+    console.log('Entire database schema reset successfully!');
     process.exit(0);
   } catch (err) {
     console.error('Error resetting database:', err);
