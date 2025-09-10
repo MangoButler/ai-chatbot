@@ -7,7 +7,11 @@ import {
   streamText,
 } from 'ai';
 import { auth, type UserType } from '@/app/(auth)/auth';
-import { type RequestHints, systemPrompt } from '@/lib/ai/prompts';
+import {
+  type RequestHints,
+  storyGamePrompt,
+  systemPrompt,
+} from '@/lib/ai/prompts';
 import {
   createStreamId,
   deleteChatById,
@@ -41,6 +45,7 @@ import {
   getRandomWords,
   pickRandomPlayer,
 } from '@/lib/ai/tools/story-game-tools';
+import { buildStoryGamePrompt } from '@/lib/storyGameBuilder';
 
 export const maxDuration = 60;
 
@@ -211,7 +216,7 @@ export async function POST(request: Request) {
           selectedChatModel === 'chat-model-reasoning'
             ? []
             : selectedChatModel === 'story-game'
-              ? ['pickRandomPlayer', 'getRandomWords']
+              ? ['pickRandomPlayer']
               : [
                   'getWeather',
                   'createDocument',
@@ -219,9 +224,18 @@ export async function POST(request: Request) {
                   'requestSuggestions',
                 ];
 
+        const roundNumber = messagesFromDb.length + 1;
+
+        // 👇 Choose system prompt
+
+        const system =
+          selectedChatModel === 'story-game'
+            ? buildStoryGamePrompt(storyGamePrompt, roundNumber)
+            : systemPrompt({ selectedChatModel, requestHints });
+
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
-          system: systemPrompt({ selectedChatModel, requestHints }),
+          system: system,
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
           activeTools,

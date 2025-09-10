@@ -9,8 +9,8 @@ export interface ChatModel {
 export const chatModels: Array<ChatModel> = [
   {
     id: 'chat-model',
-    name: 'Chat model',
-    description: 'Primary model for all-purpose chat',
+    name: 'Sass Chat',
+    description: 'All-purpose chat sassy sometimes',
   },
   {
     id: 'chat-model-reasoning',
@@ -19,12 +19,12 @@ export const chatModels: Array<ChatModel> = [
   },
   {
     id: 'character-fight-simulator',
-    name: 'Character fight simulator',
+    name: 'Fight Simulator',
     description: 'Simulates fights between fictional characters',
   },
   {
     id: 'story-game',
-    name: 'Collaborative Story Game',
+    name: 'Story Game',
     description: 'Players take turns writing a story using random words',
   },
 ];
