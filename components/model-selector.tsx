@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { CheckCircleFillIcon, ChevronDownIcon } from './icons';
 import { entitlementsByUserType } from '@/lib/ai/entitlements';
 import type { Session } from 'next-auth';
+import { useChatModel } from '@/lib/chat-model-context';
 
 export function ModelSelector({
   session,
@@ -43,6 +44,7 @@ export function ModelSelector({
       ),
     [optimisticModelId, availableChatModels],
   );
+  const { setSelectedModel } = useChatModel();
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
@@ -72,6 +74,7 @@ export function ModelSelector({
               key={id}
               onSelect={() => {
                 setOpen(false);
+                setSelectedModel(chatModel);
 
                 startTransition(() => {
                   setOptimisticModelId(id);

@@ -1,4 +1,4 @@
-import { useSelectedChatModel } from '@/hooks/get-selected-chat-model';
+import { useChatModel } from './chat-model-context';
 
 type SuggestedAction = {
   title: string;
@@ -7,7 +7,7 @@ type SuggestedAction = {
 };
 
 export function useSuggestedActions() {
-  const selectedChatModel = useSelectedChatModel();
+  const selectedChatModel = useChatModel().selectedModel;
 
   let suggestedActions: SuggestedAction[] = [];
 
