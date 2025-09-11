@@ -39,7 +39,9 @@ import { ChatSDKError } from '../errors';
 // https://authjs.dev/reference/adapter/drizzle
 
 // biome-ignore lint: Forbidden non-null assertion.
-const client = postgres(process.env.POSTGRES_URL!);
+const client = postgres(process.env.POSTGRES_URL!, {
+  debug: true, // <-- enable debug
+});
 const db = drizzle(client);
 
 export async function getUser(email: string): Promise<Array<User>> {
@@ -100,6 +102,7 @@ export async function saveChat({
       visibility,
     });
   } catch (error) {
+    console.error('SAVE CHAT FAILED:', error);
     throw new ChatSDKError('bad_request:database', 'Failed to save chat');
   }
 }
