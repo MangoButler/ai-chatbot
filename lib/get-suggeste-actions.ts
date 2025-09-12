@@ -15,19 +15,19 @@ export function useSuggestedActions() {
     case 'chat-model': // Sass Chat
       suggestedActions = [
         {
-          title: 'Give me a sassy answer',
-          label: 'about pineapple pizza',
-          action: 'What do you think about pineapple on pizza?',
+          title: 'Tell me a joke',
+          label: 'about pizza',
+          action: 'Tell me a joke about pizza.',
         },
         {
           title: 'Roast me',
-          label: 'for using tabs instead of spaces',
-          action: 'Roast me for preferring tabs over spaces in code.',
+          label: 'for being a react developer',
+          action: 'Roast me for using React.',
         },
         {
-          title: 'Explain quantum physics',
+          title: 'Explain biology',
           label: 'like I am five',
-          action: 'Explain quantum physics like I am five, but be sassy.',
+          action: 'Explain biology like I am five.',
         },
       ];
       break;
