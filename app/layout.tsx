@@ -9,7 +9,7 @@ import { SessionProvider } from 'next-auth/react';
 import { ChatModelProvider } from '@/lib/chat-model-context';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chat.vercel.ai'),
+  metadataBase: new URL('https://ai-chatbot-chi-eight-29.vercel.app/'),
   title: 'Games & More Chatbot',
   description: 'A chatbot meant to let users play a variety of games.',
 };
