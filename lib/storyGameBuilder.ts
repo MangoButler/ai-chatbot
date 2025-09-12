@@ -15,7 +15,7 @@ function generateRoundModifiers(count = 3): RoundModifiers {
 
   // 🎲 Chance of a plot twist (adjust probability as needed)
   let plotTwist: string | null = null;
-  if (Math.random() < 0.05) {
+  if (Math.random() < 0.04) {
     plotTwist = twists[Math.floor(Math.random() * twists.length)];
   }
   console.log('Generated words:', words, 'Plot twist:', plotTwist);
