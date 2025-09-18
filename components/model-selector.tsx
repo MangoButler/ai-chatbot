@@ -60,7 +60,9 @@ export function ModelSelector({
           variant="outline"
           className="md:px-2 md:h-[34px]"
         >
-          {selectedChatModel?.name}
+          {selectedChatModel?.name && selectedChatModel?.name.length > 10
+            ? `${selectedChatModel?.name.slice(0, 7)}...`
+            : selectedChatModel?.name}
           <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>

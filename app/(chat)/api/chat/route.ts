@@ -233,6 +233,8 @@ export async function POST(request: Request) {
             ? buildStoryGamePrompt(storyGamePrompt, roundNumber)
             : systemPrompt({ selectedChatModel, requestHints });
 
+        // console.log(message.parts[0]);
+
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
           system: system,

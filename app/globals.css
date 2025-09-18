@@ -234,3 +234,62 @@
 .suggestion-highlight {
   @apply bg-blue-200 hover:bg-blue-300 dark:hover:bg-blue-400/50 dark:text-blue-50 dark:bg-blue-500/40;
 }
+
+/* Editing the markdown tag rules */
+
+/* Base wrapper for all Markdown content */
+.markdown-content {
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap; /* text wraps normally */
+}
+
+/* Text and inline elements wrap normally */
+.markdown-content p,
+.markdown-content span,
+.markdown-content strong,
+.markdown-content em,
+.markdown-content a,
+.markdown-content blockquote {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Lists wrap normally */
+.markdown-content ul,
+.markdown-content ol,
+.markdown-content li {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Code blocks: scroll if too wide */
+.markdown-content pre {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto; /* horizontal scroll only if needed */
+  white-space: pre; /* keep code formatting */
+}
+
+/* Tables: scroll horizontally if they exceed container */
+.markdown-content table {
+  display: block; /* allows scroll */
+  width: 100%;
+  overflow-x: auto;
+}
+
+.markdown-content th,
+.markdown-content td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd;
+}
+
+/* Images */
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+}

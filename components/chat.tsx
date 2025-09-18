@@ -137,7 +137,7 @@ export function Chat({
           session={session}
         />
 
-        <Messages
+        {/* <Messages
           chatId={id}
           status={status}
           votes={votes}
@@ -146,7 +146,22 @@ export function Chat({
           regenerate={regenerate}
           isReadonly={isReadonly}
           isArtifactVisible={isArtifactVisible}
-        />
+        /> */}
+        <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+          {/* Wrapper ensures bubbles never overflow */}
+          <div className="flex flex-col flex-1 max-w-full px-2 overflow-x-hidden">
+            <Messages
+              chatId={id}
+              status={status}
+              votes={votes}
+              messages={messages}
+              setMessages={setMessages}
+              regenerate={regenerate}
+              isReadonly={isReadonly}
+              isArtifactVisible={isArtifactVisible}
+            />
+          </div>
+        </div>
 
         <form className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl">
           {!isReadonly && (

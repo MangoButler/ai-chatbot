@@ -142,7 +142,9 @@ const PurePreviewMessage = ({
                             message.role === 'user',
                         })}
                       >
-                        <Markdown>{sanitizeText(part.text)}</Markdown>
+                        <div className="markdown-content">
+                          <Markdown>{sanitizeText(part.text)}</Markdown>
+                        </div>
                       </div>
                     </div>
                   );
